@@ -43,6 +43,14 @@ const UseEffectDemo = () => {
 //    let [city,SetCity]=     useState('delhi')
   let [apiData,SetApiData] =   useState([])
   console.log(apiData,"apiDatatatatata");
+  console.log("hehehe");
+  console.log("datata");
+  console.log("byeeee");
+  console.log("jwbfuywfgbwiuf");
+  
+  
+  
+  
   useEffect(()=>{
     // console.log("hellloo");
     fetch("https://jsonplaceholder.typicode.com/todos").then((res)=>{
@@ -66,6 +74,8 @@ const UseEffectDemo = () => {
                 return(<>
                 <h2>{a.id}</h2>
                 <h4>{a.title}</h4>
+                <h3>{a.userId}</h3>
+                <h4>{a.completed}</h4>
                 </>)
             })
         }

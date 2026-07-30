@@ -1,0 +1,50 @@
+.container {
+    width: 90%;
+    margin: 40px auto;
+  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .card {
+    width: 250px;
+    padding: 20px;
+  
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  
+    text-align: center;
+  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+    transition: 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card h2 {
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    margin-bottom: 15px;
+    color: gray;
+  }
+  
+  .card button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: royalblue;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .card button:hover {
+    background-color: dodgerblue;
+  }

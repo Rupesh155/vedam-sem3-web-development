@@ -1,0 +1,7 @@
+*{
+/* background-color: brown; */
+}
+.nav{
+    display: flex;
+    justify-content: space-between;
+}
