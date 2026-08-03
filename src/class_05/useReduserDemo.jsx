@@ -32,6 +32,19 @@ import React, { useReducer } from 'react'
 const UseReduserDemo = () => {
 
 
+//     let arr=[1,2,3,4,5]
+//     let key=2
+     
+
+//   let data1=   arr.filter((_,id)=>{
+//         return id!=key
+
+//     })
+//     console.log(data1);
+    
+    
+
+
 
     // let ar=[1,2,3,4]
     // let num=[...ar,5,6]
@@ -65,26 +78,28 @@ const UseReduserDemo = () => {
         else if(action.type=="add"){
             return{
                ...state,
-               list:[...state.list , state.input]
+               list:[...state.list , state.input],
+               input:""
             }
 
         }
-        // else{
-        //     return{
+        else if(action.type=="d"){
+            return{
+                ...state,
+                list:state.list.filter((_,id)=>id!==action.payload)
 
-        //     }
-        // }
-
+            }
+        }
     }
   let [state,dispatch]=  useReducer(reduser,data)
   return (
     <div>
-        <input  onChange={(e)=>dispatch({type:"inp",payload:e.target.value})}/>
+        <input value={state.input}  onChange={(e)=>dispatch({type:"inp",payload:e.target.value})}/>
         <button  onClick={()=>dispatch({type:"add"})}>add</button>
         {
-            state.list.map((a)=>{
+            state.list.map((a,id)=>{
                 return(<>
-                <li>{a}</li>
+                <li onClick={()=>dispatch({type:"d",payload:id})}>{a}</li>
                 </>)
             })
         }
