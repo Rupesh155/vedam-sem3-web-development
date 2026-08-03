@@ -39,12 +39,14 @@
 
 
 import React from 'react'
-import Home from './class_03/Home'
+// import Home from './class_03/Home'
+import UseReduserDemo from './class_05/useReduserDemo'
 
 const App = () => {
   return (
     <div>
-      <Home/>
+      {/* <Home/> */}
+      <UseReduserDemo/>
     </div>
   )
 }
