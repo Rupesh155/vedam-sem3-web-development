@@ -41,12 +41,16 @@
 import React from 'react'
 // import Home from './class_03/Home'
 import UseReduserDemo from './class_05/useReduserDemo'
+import MemoDemo from './class_06/MemoDemo'
+import Assignment from './class_07/Assignment'
 
 const App = () => {
   return (
     <div>
       {/* <Home/> */}
-      <UseReduserDemo/>
+      {/* <UseReduserDemo/> */}
+      {/* <MemoDemo/> */}
+      <Assignment/>
     </div>
   )
 }
