@@ -15,60 +15,72 @@
 
 
 
-const http = require("http");
+// const http = require("http");
 
-const server = http.createServer((req, res) => {
+// const server = http.createServer((req, res) => {
 
-    if (req.url === "/") {
-        res.end("Home Page");
-    }
+//     if (req.url === "/") {
+//         res.end("Home Page");
+//     }
 
-    else if (req.url === "/about") {
-        res.end("About Page");
-    }
+//     else if (req.url === "/about") {
+//         res.end("About Page");
+//     }
 
-    else if (req.url === "/contact") {
-        res.end("Contact Page");
-    }
+//     else if (req.url === "/contact") {
+//         res.end("Contact Page");
+//     }
 
-    else {
-        res.statusCode = 404;
-        res.end("Page Not Found");
-    }
+//     else {
+//         res.statusCode = 404;
+//         res.end("Page Not Found");
+//     }
 
-});
+// });
 
-server.listen(3000, () => {
-    console.log("Node.js server running on port 3000");
-});
-
-
+// server.listen(3000, () => {
+//     console.log("Node.js server running on port 3000");
+// });
 
 
-// web server using expresss
 
 
-const express = require("express");
+// // web server using expresss
 
-const app = express();
 
-app.use((req, res, next) => {
-    console.log(req.method, req.url);
-    next();
-});
+// const express = require("express");
 
-app.get("/", (req, res) => {
-    res.send("Home Page");
-});
+// const app = express();
 
-app.get("/about", (req, res) => {
-    res.send("About Page");
-});
+// app.use((req, res, next) => {
+//     console.log(req.method, req.url);
+//     next();
+// });
 
-app.get("/contact", (req, res) => {
-    res.send("Contact Page");
-});
+// app.get("/", (req, res) => {
+//     res.send("Home Page");
+// });
 
-app.listen(3000, () => {
-    console.log("Express server running on port 3000");
-});
+// app.get("/about", (req, res) => {
+//     res.send("About Page");
+// });
+
+// app.get("/contact", (req, res) => {
+//     res.send("Contact Page");
+// });
+
+// app.listen(3000, () => {
+//     console.log("Express server running on port 3000");
+// });
+
+
+let express=  require('express')
+let app=  express()
+app.post('/about',(req,res)=>{
+    console.log(req.body);
+    
+})
+app.listen(3000,()=>{
+    console.log("server");
+    
+})
