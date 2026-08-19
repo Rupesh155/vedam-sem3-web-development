@@ -376,6 +376,11 @@
     }
 ];
 
+
+// products[0].id=10
+app.use(express.json())
+
+
 app.get('/',(req,res)=>{
    res.send(products)
    // res.send("hehe")
@@ -398,6 +403,11 @@ app.get('/product/:id',(req,res)=>{
 
 })
 
+
+// if(![]){
+//    console.log("hehehe");
+   
+// }
 app.get('/search',(req,res)=>{
    let {category}=req.query
    // console.log(category,"heheeh");
@@ -415,6 +425,42 @@ app.get('/search',(req,res)=>{
    
 
 })
+app.post('/product',(req,res)=>{
+   console.log(req.body);
+   let obj={
+      ...req.body
+
+   }
+   products.push(obj)
+   res.send("doneee")
+
+   
+
+
+})
+app.put('/product/:id',(req,res)=>{
+   let {id}=req.params;
+   console.log(id,"hehe");
+   console.log(req.body,"updatedddddd");
+   let {stock}=req.body
+   
+ let data=  products.find((a)=>{
+   // console.log(a,"aa");
+   console.log(a.id,"hehe");
+   
+   
+      return a.id===Number(id)
+
+   })
+   console.log(data,"datata");
+   data.stock=stock
+   res.json({msg:"done",data})
+   
+   
+
+
+})
+
 
  app.listen(4000,()=>{
    console.log("server.....");
@@ -431,7 +477,7 @@ app.get('/search',(req,res)=>{
 
 // // POST    /products
 
-// // PUT     /products/3
+// // PUT     /products/3   => 1 => stock ==100
 
 // // DELETE  /products/3
 
