@@ -9,7 +9,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.6",
+    "csurf": "^1.11.0",
     "express": "^5.2.1"
   }
 }
