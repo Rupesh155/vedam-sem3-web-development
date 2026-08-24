@@ -332,7 +332,11 @@
  let express= require("express")
  let app= express()
  let cors= require('cors')
+ let cookieParser = require('cookie-parser')
+ let csurf = require('csurf')
  app.use(cors())
+ app.use(cookieParser())
+ app.use(csurf({cookie: true}))
  let products = [
     {
         id: 1,
