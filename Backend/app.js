@@ -559,12 +559,29 @@ let auth=(req,res,next)=>{
    }
   let decode=  jwt.verify(token,"hehehehehe")
   console.log(decode,"isse");
+  req.user=decode
+
   next()
+}
+let roleCheck=(role)=>{
+   return (req,res,next)=>{
+      if(req.user.role!==role){
+         return res.send("who the hell are u...........")
+      }
+      // console.log(req.user,"isko dekhoooo");
+      next()
+   }
 }
 
 
-app.get("/api",auth,(req,res)=>{
+
+
+app.get("/api",auth, roleCheck("admin"),(req,res)=>{
    res.send("heheh")
+
+})
+app.get('/admin',(req,res)=>{
+   res.send("mai hu adminnnnnn")
 
 })
 
