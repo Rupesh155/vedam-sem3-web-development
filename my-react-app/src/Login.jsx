@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  let navigate=  useNavigate()
 
   const [formData, setFormData] = useState({
     email: "",
@@ -37,8 +39,12 @@ function Login() {
       console.log("Login Response:", response.data);
 
 
+
       // Token backend se mila
       const token = response.data.token;
+      if(token){
+        navigate('/dash')
+      }
 
 
       // Token localStorage mein save
@@ -46,15 +52,15 @@ function Login() {
 
 
       // 1 minute ka timer
-      setTimeout(() => {
+    //   setTimeout(() => {
 
-        localStorage.removeItem("token");
+    //     localStorage.removeItem("token");
     
-        alert("Session expired. Please login again.");
+    //     alert("Session expired. Please login again.");
     
-        navigate("/");
+    //     navigate("/");
     
-      }, 60000);
+    //   }, 60000);
     
 
 
