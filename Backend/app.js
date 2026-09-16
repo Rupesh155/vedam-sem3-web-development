@@ -589,7 +589,7 @@ app.post('/forgot-password', async (req, res) => {
      await user.save();
  
  
-     const resetUrl = `${req.protocol}://${req.get('host')}/api/reset-password/${resetToken}`;
+     const resetUrl = `http://localhost:3000/reset-password/${resetToken}`;
      await sendEmail(
        user.email,
        'Password Reset Request',
@@ -601,6 +601,35 @@ app.post('/forgot-password', async (req, res) => {
      res.status(500).send('Error sending password reset email: ' + error.message);
    }
  });
+
+
+ app.post('/reset-password/:token', async(req,res)=>{
+   let {newP}= req.body
+
+     let {token}=   req.params
+
+    let user=  await User.findOne({
+         resetToken:token,
+         resetTokenExpiry:{$gt: Date.now()}
+         
+     })
+     if(!user){
+      return res.send("invaliddd.......")
+     }
+     else{
+       let updatedP=  await   bcryptjs.hash(newP,10)
+       user.passWord=updatedP
+       user.resetToken=undefined
+       user.resetTokenExpiry=undefined
+       await user.save()
+     }
+
+ })
+
+
+
+
+
  
 
 
