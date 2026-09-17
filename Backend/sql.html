@@ -1,0 +1,65 @@
+CREATE DATABASE subquery_practice;
+USE subquery_practice;
+
+
+
+CREATE TABLE departments (
+    id INT PRIMARY KEY,
+    department_name VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL
+);
+
+INSERT INTO departments (id, department_name, city) VALUES
+(1, 'HR', 'Pune'),
+(2, 'IT', 'Pune'),
+(3, 'Sales', 'Mumbai'),
+(4, 'Finance', 'Delhi'),
+(5, 'Marketing', 'Pune'),
+(6, 'Operations', 'Bangalore'),
+(7, 'Support', 'Mumbai'),
+(8, 'Engineering', 'Hyderabad');
+
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    salary DECIMAL(10,2) NOT NULL,
+    department_id INT,
+    manager_id INT,
+
+    FOREIGN KEY (department_id)
+        REFERENCES departments(id)
+);
+
+
+
+
+INSERT INTO employees
+(id, name, salary, department_id, manager_id)
+VALUES
+(1, 'Rahul', 85000, 2, NULL),
+(2, 'Aman', 65000, 2, 1),
+(3, 'Priya', 95000, 2, 1),
+
+(4, 'Neha', 55000, 1, NULL),
+(5, 'Rohit', 60000, 1, 4),
+(6, 'Sneha', 75000, 1, 4),
+
+(7, 'Vikas', 120000, 3, NULL),
+(8, 'Anjali', 90000, 3, 7),
+(9, 'Karan', 70000, 3, 7),
+
+(10, 'Pooja', 50000, 4, NULL),
+(11, 'Arjun', 80000, 4, 10),
+
+(12, 'Simran', 110000, 5, NULL),
+(13, 'Mohit', 72000, 5, 12),
+(14, 'Kavya', 68000, 5, 12),
+
+(15, 'Nikhil', 45000, 6, NULL),
+(16, 'Isha', 58000, 6, 15),
+
+(17, 'Varun', 150000, 8, NULL),
+(18, 'Meera', 100000, 8, 17),
+(19, 'Dev', 85000, 8, 17),
+
+(20, 'Tanya', 65000, 7, NULL);

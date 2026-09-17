@@ -588,7 +588,6 @@ app.post('/forgot-password', async (req, res) => {
      user.resetTokenExpiry = Date.now() + 3600000; 
      await user.save();
  
- 
      const resetUrl = `http://localhost:3000/reset-password/${resetToken}`;
      await sendEmail(
        user.email,
@@ -601,8 +600,6 @@ app.post('/forgot-password', async (req, res) => {
      res.status(500).send('Error sending password reset email: ' + error.message);
    }
  });
-
-
  app.post('/reset-password/:token', async(req,res)=>{
    let {newP}= req.body
 
@@ -613,6 +610,8 @@ app.post('/forgot-password', async (req, res) => {
          resetTokenExpiry:{$gt: Date.now()}
          
      })
+     console.log(user,"heheheheehehehehhe");
+     
      if(!user){
       return res.send("invaliddd.......")
      }
@@ -621,7 +620,8 @@ app.post('/forgot-password', async (req, res) => {
        user.passWord=updatedP
        user.resetToken=undefined
        user.resetTokenExpiry=undefined
-       await user.save()
+       await user.save() 
+       res.send("ho gyaaaaa")
      }
 
  })
