@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Login.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   let navigate=  useNavigate()
@@ -142,6 +142,9 @@ function Login() {
           <button type="submit">
             Login
           </button>
+
+
+         <Link to={'/reset'}>Forget passs</Link>
 
         </form>
 
