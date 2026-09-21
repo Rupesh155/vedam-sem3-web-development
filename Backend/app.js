@@ -503,6 +503,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/db").then(()=>{
    console.log("db......");
    
 })
+
 app.post("/signUp", async(req,res)=>{
    let {name,email,passWord ,role}=req.body
   let findData=   await User.findOne({email})
@@ -546,6 +547,8 @@ app.post('/login', async(req,res)=>{
  res.json({msg:"done",token:token})
 
 })
+
+
 let auth=(req,res,next)=>{
    let token=req.headers.authorization;
    console.log(token,"toeknn");
@@ -587,8 +590,7 @@ app.post('/forgot-password', async (req, res) => {
      user.resetToken = resetToken;
      user.resetTokenExpiry = Date.now() + 3600000; 
      await user.save();
- 
-     const resetUrl = `http://localhost:3000/reset-password/${resetToken}`;
+     const resetUrl = `http://localhost:5173/reset/${resetToken}`;
      await sendEmail(
        user.email,
        'Password Reset Request',
@@ -625,6 +627,29 @@ app.post('/forgot-password', async (req, res) => {
      }
 
  })
+
+
+
+ app.get('/error', (req, res) => {
+
+   // let result = JSON.parse("hello");
+   try{
+      let user=null
+      console.log(user.name);
+      console.log("hehehe");
+      console.log("hey!!"); 
+     res.send("hello");
+   }
+   catch(err){
+      res.send("erororor",err)
+
+   }
+  
+   
+
+
+
+});
 
 
 
